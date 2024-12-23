@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 
 
 st.set_page_config(
@@ -11,7 +12,9 @@ st.set_page_config(
 
 @st.cache_data
 def get_data():
-    df = pd.read_parquet("data/orders.parquet")
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    data_file = os.path.join(base_dir, "data", "orders.parquet")
+    df = pd.read_parquet(data_file)
     df["order_date"] = pd.to_datetime(df["order_date"])
 
     return df
