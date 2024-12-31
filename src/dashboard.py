@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 
-from producer import generate_fake_orders
+from consumer import get_message
 
 st.set_page_config(
     page_title="Workshop Streamlit - Real Time Dashboard",
@@ -21,7 +21,7 @@ def get_data():
     return df
 
 def new_order():
-    dict_data = generate_fake_orders()
+    dict_data = get_message()
     new_order = pd.DataFrame([dict_data])
     new_order["order_date"] = pd.to_datetime(new_order["order_date"])
     return new_order
