@@ -43,7 +43,7 @@ def generate_fake_orders_parquet(n_rows=100000):
     output_file = os.path.join(data_dir, "orders.parquet")
 
     # Generate data and save to the file
-    data = [generate_fake_orders() for _ in range(n_rows)]
+    data = [generate_fake_orders(start_date="-30d",end_date="-1d") for _ in range(n_rows)]
     pd.DataFrame(data).to_parquet(output_file, index=False)
 
 if __name__ == "__main__":
