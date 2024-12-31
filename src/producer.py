@@ -31,7 +31,7 @@ def generate_fake_orders(start_date="today", end_date="today"):
         "total_price": total_price,
     }
 
-def generate_fake_orders_parquet(n_rows=100000):
+def generate_fake_orders_parquet(n_rows=10000):
     # Resolve the absolute path for the data directory
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     data_dir = os.path.join(base_dir, "data")
